@@ -23,7 +23,6 @@ namespace LexiconVendingMachine.Model
 
 		}
 
-
 		// What products does the person have
 		private readonly Inventory _inventory = new Inventory();
 		public Inventory Inventory { get => _inventory; }
@@ -34,7 +33,7 @@ namespace LexiconVendingMachine.Model
 		// A person with money
 		public Person(int money)
 		{
-			_inWallet = money;
+			InWallet = money;
 		}
 
 		// Print out the availible funds in the wallet
@@ -172,7 +171,7 @@ namespace LexiconVendingMachine.Model
 			// Let the person know how much money they have after the
 			// transactions with the vending machine.
 			Console.WriteLine();
-			Console.WriteLine($"You now have {_inWallet} SEK in your wallet.");
+			Console.WriteLine($"You now have {InWallet} SEK in your wallet.");
 			Console.WriteLine();
 		}
 
@@ -227,7 +226,7 @@ namespace LexiconVendingMachine.Model
 					// Person is trying to get money from the vending machine ... That is a no-no.
 					Console.WriteLine("You can not insert a negative amout of money!");
 				}
-				else if(validNumber && moneyToInsert > _inWallet)
+				else if(validNumber && moneyToInsert > InWallet)
 				{
 					// The person does not have the fund requested to insert into the
 					// vending machine. 

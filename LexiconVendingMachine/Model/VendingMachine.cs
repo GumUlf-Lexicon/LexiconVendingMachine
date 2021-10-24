@@ -21,11 +21,13 @@ namespace LexiconVendingMachine.Model
 
 
 		// Create a standard vending machine
-		public VendingMachine(){
+		public VendingMachine()
+		{
 		}
 
 		// Create a vending machine that accepts the specified denominations
-		public VendingMachine(int[] validDenominations) {
+		public VendingMachine(int[] validDenominations)
+		{
 			_validDenominations = validDenominations;
 		}
 
@@ -35,13 +37,13 @@ namespace LexiconVendingMachine.Model
 		{
 			Product[] products = Inventory.GetAll();
 
-			Console.WriteLine("  Available products:");
+			Console.WriteLine("  The vending machine contains:");
 
 			for(int i = 0; i < products.Length; i++)
 			{
 				Product product = products[i];
 
-				Console.Write($"{i + 1, 4}: ");
+				Console.Write($"{i + 1,4}: ");
 				product.Examine();
 			}
 			Console.WriteLine();
@@ -113,7 +115,7 @@ namespace LexiconVendingMachine.Model
 			bool validSelection = false;
 
 			while(!validSelection)
-			{ 
+			{
 				Console.Write("Enter rownumber for product: ");
 
 				bool validInt = int.TryParse(Console.ReadLine(), out orderNo);
@@ -135,12 +137,12 @@ namespace LexiconVendingMachine.Model
 			// Carry out the costumers order
 			if(orderNo > 0)
 			{
-				
+				product = products[orderNo - 1];
+
 				if(product.Price <= AvailableFunds)
 				{
 					// The costumer can afford the item and it is bought
 
-					product = products[orderNo - 1];
 					AvailableFunds -= product.Price;
 					Console.WriteLine($"You bought \"{product.Description}\".");
 					return true;

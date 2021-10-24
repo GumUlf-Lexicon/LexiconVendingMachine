@@ -1,5 +1,4 @@
 ﻿using LexiconVendingMachine.Data;
-using System;
 using Xunit;
 
 
