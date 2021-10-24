@@ -17,9 +17,4 @@
 		<ProjectReference Include="..\LexiconVendingMachine\LexiconVendingMachine.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="Model" />
-
-	</ItemGroup>
-
 </Project>
