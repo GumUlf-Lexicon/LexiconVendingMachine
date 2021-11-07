@@ -4,10 +4,8 @@ namespace LexiconVendingMachine.Model
 {
 	public abstract class Product: IEquatable<Product>
 	{
-		private string _description;
-		private int _price;
-
 		// What is the product?
+		private string _description;
 		public string Description
 		{
 			get => _description;
@@ -22,8 +20,9 @@ namespace LexiconVendingMachine.Model
 				_description = value;
 			}
 		}
-
+		
 		// How much does the product cost
+		private int _price;
 		public int Price
 		{
 			get => _price;
@@ -39,15 +38,38 @@ namespace LexiconVendingMachine.Model
 			}
 		}
 
-		// Print out the the description and price to console
-		public virtual void Examine()
+		// What happens when the product is used
+		private string _usingAction;
+		public string UsingAction
 		{
-			Console.WriteLine($"{Description,-50} {Price,5} SEK");
+			get => _usingAction;
+
+			// Don't let the user change the using action
+			protected set
+			{
+				// There must be a using action to know what happens when
+				// the product is used.
+				if(string.IsNullOrWhiteSpace(value))
+				{
+					throw new ArgumentException("The product must ha av using action!");
+				}
+
+				_usingAction = value;
+			}
+		}
+
+		// Get a string with the description and price of the product
+		public virtual string Examine()
+		{
+			return $"{Description,-50} {Price,5} SEK";
 		}
 
 		// Make use of the product.
 		// Print out what's happening when using it
-		public abstract void Use();
+		public virtual void Use()
+		{
+			Console.WriteLine(UsingAction);
+		}
 
 		/*******************************************************************
 		 *                   Implementation of IEquatable                  *
