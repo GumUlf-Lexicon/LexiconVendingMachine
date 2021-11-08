@@ -40,11 +40,16 @@ namespace LexiconVendingMachine.Model.Products
 
 		// Full constructor for the class
 		public Tool(string description, int price, string color, string usingAction):
-			this(description, price, usingAction)
+			this(description, price, color)
 		{
 			UsingAction = usingAction;
 		}
 
+		// Return a string that describes the tool and its price.
+		public override string Examine()
+		{
+			return $"{$"{Description}, {Color}",-50} {Price,5} SEK";
+		}
 
 		// The tool types
 		public enum ToolType

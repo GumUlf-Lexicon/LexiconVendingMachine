@@ -19,6 +19,7 @@ namespace LexiconVendingMachine
 			vendingMachine.AddProduct(new Candy("A candy cane", 10, 100));
 			vendingMachine.AddProduct(new Beverage("Sparkling cloudberry drink", 33, 12, Beverage.Container.Can, "You open the drink and take a sip of it. You get an energy boost and runs around fast like a rabbit."));
 			vendingMachine.AddProduct(new Tool("A swiss army knife", 159, "Red and silver", "You fold out the knife and cuts open a sealed bag of candy."));
+			vendingMachine.AddProduct(new Tool("A swiss army knife", 159, "Black and gold", "You fold out the cork opener and opens bottle of fine wine."));
 
 
 			// A user is needed
