@@ -2,13 +2,13 @@
 {
 	interface IVending
 	{
-		Product[] ShowAll();
+		string ShowAll();
 
 		int InsertMoney(int money);
 
-		bool Purchase(out Product product, out bool endTransaction, out bool needMoreMoney);
+		bool Purchase(out Product product);
 
-		int EndTransaction();
+		int[] EndTransaction();
 
 
 	}

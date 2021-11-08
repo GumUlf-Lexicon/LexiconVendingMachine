@@ -24,22 +24,85 @@ namespace LexiconVendingMachine
 			// A user is needed
 			Person person = new Person(512);
 
-			
-			Console.WriteLine();
-			person.UseVendingMachine(vendingMachine);
-			
-			Console.WriteLine();
-			person.UseItems();
 
-			// See what the user owns
-			Console.Clear();
-			person.ShowWallet();
-			Console.WriteLine();
-			person.ShowInventory();
-			Console.WriteLine();
+			bool endProgram = false;
+
+			while(!endProgram)
+			{
+				Console.Clear();
+				Console.WriteLine();
+				Console.WriteLine("What do you want to do?");
+
+				Console.WriteLine();
+				Console.WriteLine(" 1. See funds i wallet");
+				Console.WriteLine(" 2. Use vending machine");
+				Console.WriteLine(" 3. See your inventory ");
+				Console.WriteLine(" 4. Use your products");
+				Console.WriteLine();
+				Console.WriteLine(" 0. End program");
+				Console.WriteLine();
 
 
+				// Get selection from user. Retry until a valid selection is made
+				int selection = 0;
+				bool validSelection = false;
 
+				while(!validSelection)
+				{
+					Console.Write("Enter selection: ");
+
+					bool validInt = int.TryParse(Console.ReadLine(), out selection);
+					if(!validInt)
+					{
+						Console.WriteLine("You must enter a number!");
+					}
+					else if(selection < 0 || selection > 4)
+					{
+						Console.WriteLine("Invalid selection!");
+					}
+					else
+					{
+						validSelection = true;
+					}
+					Console.WriteLine();
+				}
+
+				bool waitForKey = true;
+				switch(selection)
+				{
+					case 1:
+						person.ShowWallet();
+						break;
+
+					case 2:
+						person.UseVendingMachine(vendingMachine);
+						waitForKey = false;
+						break;
+
+					case 3:
+						person.ShowInventory();
+						break;
+
+					case 4:
+						person.UseItems();
+						break;
+
+					case 0:
+						endProgram = true;
+						waitForKey = false;
+						break;
+
+					default:
+						break;
+				}
+
+				if(waitForKey)
+				{
+					Console.WriteLine();
+					Console.WriteLine("Press any key to continue");
+					_ = Console.ReadKey();
+				}
+			}
 		}
 	}
 }

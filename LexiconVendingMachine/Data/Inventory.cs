@@ -39,6 +39,9 @@ namespace LexiconVendingMachine.Data
 		// Returns false if the product was not found or could not be removed.
 		public bool RemoveProduct(Product productToRemove)
 		{
+			if(productToRemove is null)
+				throw new ArgumentNullException("You have to specify what product to remove!");
+
 			return products.Remove(productToRemove);
 		}
 
